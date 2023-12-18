@@ -20,6 +20,8 @@ var replies = [
 	"lietots produkts",
 	"uztaisi sviestmaizi",
 	"kurš deva tiesības runāt?",
+	"tukša pudele",
+	"atnes alu",
 ];
 /**
  *
