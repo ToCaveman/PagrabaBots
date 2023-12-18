@@ -9,7 +9,6 @@ const { Client, Message } = require("discord.js");
 const targetClientIDs = [
 	"1039086985907806220",
 	"897740828389302303",
-	"297710605522173954",
 	"1185565334049128509",
 ];
 var replies = [

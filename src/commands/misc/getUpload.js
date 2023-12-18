@@ -28,7 +28,7 @@ module.exports = {
 		await fetchUpload();
 		await interaction.deferReply();
 		interaction.editReply(
-			`Saite: https://beanson.lv/uploads/${uploadName}\nAugšupielādes datums: ${uplaodDate}`
+			`**JAUNĀKĀ AUGŠUPIELĀDE**\nSaite: https://beanson.lv/uploads/${uploadName}\nAugšupielādes datums: ${uplaodDate}`
 		);
 	},
 };
