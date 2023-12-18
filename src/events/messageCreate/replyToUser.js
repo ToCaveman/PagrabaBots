@@ -19,7 +19,7 @@ var replies = [
 	"ORIGO bomzis",
 	"lietots produkts",
 	"uztaisi sviestmaizi",
-	"kurš deva tiesūbas runāt?",
+	"kurš deva tiesības runāt?",
 ];
 /**
  *
