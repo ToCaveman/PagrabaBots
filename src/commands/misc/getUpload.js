@@ -2,7 +2,6 @@
 const url = "https://beanson.lv/list.json";
 
 // kods ko misters gpt uzgenereja
-// Using Fetch API to get the JSON data
 function fetchUpload() {
 	fetch(url)
 		.then((response) => {
@@ -12,15 +11,12 @@ function fetchUpload() {
 			return response.json();
 		})
 		.then((data) => {
-			// Work with the JSON data here
 			uploadName = data["data"][0]["name"];
 			uplaodDate = data["data"][0]["date"];
 			return uploadName;
 			return uplaodDate;
-			//console.log(uploadName);
 		})
 		.catch((error) => {
-			// Handle any errors that occurred during the fetch
 			console.error("Fetch error:", error);
 		});
 }
