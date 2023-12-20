@@ -31,7 +31,7 @@ module.exports = {
 			await interaction.deferReply();
 			let query = {
 				userId: interaction.member.id,
-				guildId: interaction.guild.id,
+				//guildId: interaction.guild.id,
 			};
 			let user = await User.findOne(query);
 			if (user) {
