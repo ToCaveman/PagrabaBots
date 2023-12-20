@@ -14,11 +14,11 @@ const client = new Client({
 (async () => {
 	try {
 		await mongoose.connect(process.env.MONGODB_URI);
-		console.log("savienojos ar datubazi");
+		console.log("savienojos ar datubazi 👍🎉");
 		eventHandler(client);
 
 		client.login(process.env.TOKEN);
 	} catch (error) {
-		console.log(`kļūme: ${error}`);
+		console.log(`kļūme 😡: ${error}`);
 	}
 })();
