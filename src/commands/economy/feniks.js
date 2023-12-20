@@ -4,6 +4,7 @@ const {
 	ApplicationCommandOptionType,
 } = require("discord.js");
 const User = require("../../models/User");
+const cooldowns = new Set();
 
 module.exports = {
 	/**
@@ -19,7 +20,7 @@ module.exports = {
 			});
 			return;
 		}
-		const targetUserId = interaction.member.id;
+
 		const likme = interaction.options.get("likme").value;
 		if (likme < 10) {
 			interaction.reply("Tu nevari griezt mazāk nekā 10");
@@ -41,7 +42,7 @@ module.exports = {
 			);
 			return;
 		}
-		const uzvareja = Math.random() > 0.5;
+		const uzvareja = Math.random() > 0.7;
 		if (!uzvareja) {
 			user.balance -= likme;
 			await user.save();
