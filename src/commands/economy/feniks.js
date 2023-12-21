@@ -21,6 +21,8 @@ module.exports = {
 			return;
 		}
 
+		const targetUserId = interaction.member.id;
+
 		const likme = interaction.options.get("likme").value;
 		if (likme < 10) {
 			interaction.reply("Tu nevari griezt mazāk nekā 10");
