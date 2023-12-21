@@ -76,7 +76,7 @@ module.exports = {
 		interaction.reply(
 			`🎰Tu iegriezi ${likme} un izcēli ${kopejaUzvara}🎰!\nTavā makā tagad ir: **${user.balance}**`
 		);
-		cooldown.endsAt = Date.now() + 100_000;
+		cooldown.endsAt = Date.now() + 50_000;
 		await cooldown.save();
 	},
 	name: "fenikss",
