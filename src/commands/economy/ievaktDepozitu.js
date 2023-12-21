@@ -47,6 +47,7 @@ module.exports = {
 		//depozita ievaksanas logika?
 		const depozitaPudele = getRandomNumber(1, 25);
 		user.depozitaPudeles += depozitaPudele;
+		user.kopejiDepozits += depozitaPudele;
 		await user.save();
 		interaction.editReply(
 			`Tu pa miskastēm savāci **${depozitaPudele}** depoziīta pudeles\nTagad tev ir **${user.depozitaPudeles}** depozīta pudeles`

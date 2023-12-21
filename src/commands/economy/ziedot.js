@@ -47,6 +47,7 @@ module.exports = {
 		}
 		sanemejs.balance += daudzums;
 		sutitajs.balance -= daudzums;
+		sutitajs.noziedots += daudzums;
 		await sanemejs.save();
 		await sutitajs.save();
 		interaction.reply(

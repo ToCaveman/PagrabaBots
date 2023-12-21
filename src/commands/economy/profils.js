@@ -49,27 +49,42 @@ module.exports = {
 				{
 					name: "MAKS 💰",
 					value: `${user.balance}`,
-					inline: true,
+					//inline: true,
 				},
 				{
 					name: "DEPOZĪTA PUDELES 🍾",
 					value: `${user.depozitaPudeles}`,
-					inline: true,
+					//inline: true,
 				},
 				{
 					name: "LĪMENIS 🍗",
 					value: `${fetchedLevel.level}`,
-					inline: true,
+					//inline: true,
 				},
 				{
 					name: "FENIKSA IEGUVUMI 🎰",
 					value: `${user.fenikssIeguvumi}`,
-					inline: true,
+					//inline: true,
 				},
 				{
 					name: "FENIKSA ZAUDĒJUMI 🎰❌",
 					value: `${user.fenikssZaudejumi}`,
-					inline: true,
+					//inline: true,
+				},
+				{
+					name: "DEPOZITA IEGUVUMI 🧨",
+					value: `${user.depozitsIeguvumi}`,
+					//inline: true,
+				},
+				{
+					name: "DEP PUDELES KOPĀ 🍾",
+					value: `${user.kopejiDepozits}`,
+					//inline: true,
+				},
+				{
+					name: "LABDARĪBAI ZIEDOTS 🏥",
+					value: `${user.noziedots}`,
+					//inline: true,
 				},
 			]);
 

@@ -35,6 +35,7 @@ module.exports = {
 		var depozitaVertiba = 10;
 		var ieguvumi = depozitaVertiba * user.depozitaPudeles;
 		user.balance += ieguvumi;
+		user.depozitsIeguvumi += ieguvumi;
 		interaction.editReply(
 			`Tu pārdevi ${user.depozitaPudeles} depozīta pudeles un ieguvi **${ieguvumi}**\nTavā makā tagad ir: **${user.balance}**`
 		);
