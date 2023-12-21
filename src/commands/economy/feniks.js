@@ -4,6 +4,7 @@ const {
 	ApplicationCommandOptionType,
 } = require("discord.js");
 const User = require("../../models/User");
+const Stats = require("../../models/stats");
 const Cooldown = require("../../models/cooldown");
 
 module.exports = {
@@ -50,6 +51,20 @@ module.exports = {
 			return;
 		}
 
+		let userFeniksaUzvara = await Stats.findOne({ userId }).select(
+			"userId fenikssIeguvumi"
+		);
+		if (!userFeniksaUzvara) {
+			userFeniksaUzvara = new Stats({ userId });
+		}
+
+		let userFeniksaZaude = await Stats.findOne({ userId }).select(
+			"userId fenikssZaudejumi"
+		);
+		if (!userFeniksaZaude) {
+			userFeniksaZaude = new Stats({ userId });
+		}
+
 		// naudas kasanas logika
 		if (likme > user.balance) {
 			interaction.reply(
@@ -61,22 +76,26 @@ module.exports = {
 		if (!uzvareja) {
 			user.balance -= likme;
 			await user.save();
+			userFeniksaZaude.fenikssZaudejumi += likme;
 			interaction.reply(
 				`Tu iegriezi ${likme} un kruķītajos aparātos pakāsi savu naudu! 😜`
 			);
 			cooldown.endsAt = Date.now() + 25_000;
 			await cooldown.save();
+			await userFeniksaZaude.save();
 			return;
 		}
 		//var uzvaret lidz +150%
 		var uzvarasDaudzums = Number((likme * (Math.random() + 0.55)).toFixed(0));
 		user.balance += uzvarasDaudzums;
+		userFeniksaUzvara.fenikssIeguvumi += uzvarasDaudzums;
 		const kopejaUzvara = (uzvarasDaudzums += likme);
 		await user.save();
 		interaction.reply(
 			`🎰Tu iegriezi ${likme} un izcēli ${kopejaUzvara}🎰!\nTavā makā tagad ir: **${user.balance}**`
 		);
 		cooldown.endsAt = Date.now() + 25_000;
+		await userFeniksaUzvara.save();
 		await cooldown.save();
 	},
 	name: "fenikss",

@@ -6,6 +6,7 @@ const {
 } = require("discord.js");
 const User = require("../../models/User");
 const Level = require("../../models/level");
+const Stats = require("../../models/stats");
 
 module.exports = {
 	/**
@@ -34,6 +35,15 @@ module.exports = {
 			userId: userId,
 			guildId: interaction.guild.id,
 		});
+		let userFeniksaUzvara = await Stats.findOne({ userId }).select(
+			"userId fenikssIeguvumi"
+		);
+		if (!userFeniksaUzvara) {
+			userFeniksaUzvara = new Stats({ userId });
+		}
+		const fetchedStats = await Stats.findOne({
+			userId: userId,
+		});
 
 		const embed = new EmbedBuilder()
 			.setTitle(interaction.user.displayName)
@@ -46,14 +56,27 @@ module.exports = {
 				{
 					name: "MAKS 💰",
 					value: `${user.balance}`,
+					inline: true,
 				},
 				{
 					name: "DEPOZĪTA PUDELES 🍾",
 					value: `${user.depozitaPudeles}`,
+					inline: true,
 				},
 				{
 					name: "LĪMENIS 🍗",
 					value: `${fetchedLevel.level}`,
+					inline: true,
+				},
+				{
+					name: "FENIKSA IEGUVUMI 🎰",
+					value: `${fetchedStats.fenikssIeguvumi}`,
+					inline: true,
+				},
+				{
+					name: "FENIKSA ZAUDĒJUMI 🎰❌",
+					value: `${fetchedStats.fenikssZaudejumi}`,
+					inline: true,
 				},
 			]);
 
