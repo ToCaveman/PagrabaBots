@@ -79,7 +79,7 @@ module.exports = {
 				userDepozits.depozitaPudeles = 0;
 				await user.save();
 				await interaction.editReply(
-					`Tu ubagoji un bača nozaga tavu depozītu **-${stolenAmount}** 😥\nViņš arī paņēma visas tavas depozīta pudeles.`
+					`Tu ubagoji un bača nozaga tavu naudu **-${stolenAmount}** 😥\nViņš arī paņēma visas tavas depozīta pudeles.`
 				);
 				cooldown.endsAt = Date.now() + 200_000;
 				await cooldown.save();
