@@ -24,6 +24,7 @@ module.exports = {
 			interaction.reply(
 				"navar maka vērtību uzlikt negatīvu...\nTu taču negribētu būt parādos..."
 			);
+			return;
 		}
 		const user = await User.findOne({
 			userId: targetUserId,

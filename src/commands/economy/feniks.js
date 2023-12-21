@@ -23,7 +23,7 @@ module.exports = {
 
 		const targetUserId = interaction.member.id;
 
-		const likme = interaction.options.get("likme").value;
+		var likme = interaction.options.get("likme").value;
 		if (likme < 10) {
 			interaction.reply("Tu nevari griezt mazāk nekā 10");
 			return;
@@ -52,11 +52,12 @@ module.exports = {
 			return;
 		}
 		//var uzvaret lidz +150%
-		const uzvarasDaudzums = Number((likme * (Math.random() + 0.55)).toFixed(0));
+		var uzvarasDaudzums = Number((likme * (Math.random() + 0.55)).toFixed(0));
 		user.balance += uzvarasDaudzums;
+		const kopejaUzvara = (uzvarasDaudzums += likme);
 		await user.save();
 		interaction.reply(
-			`Tu iegriezi ${likme} un izcēli ${uzvarasDaudzums}!\nTavā makā tagad ir: **${user.balance}**`
+			`Tu iegriezi ${likme} un izcēli ${kopejaUzvara}!\nTavā makā tagad ir: **${user.balance}**`
 		);
 	},
 	name: "fenikss",

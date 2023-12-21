@@ -34,6 +34,10 @@ module.exports = {
 			interaction.reply(`<@${sutitajsId}> nav izveidots profils...`);
 			return;
 		}
+		if (sutitajs.balance < daudzums) {
+			interaction.reply("Pats nabags tev nemaz nav tik daudz naudas");
+			return;
+		}
 		const sanemejs = await User.findOne({
 			userId: targetUserId,
 		});
