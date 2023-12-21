@@ -20,23 +20,24 @@ module.exports = {
 			});
 			return;
 		}
-		const targetUserId =
-			interaction.options.get("lietotajs")?.value || interaction.member.id;
+		const userId =
+			interaction.options.get("lietotajs")?.value || interaction.user.id;
 		await interaction.deferReply();
 
 		const user = await User.findOne({
-			userId: targetUserId,
+			userId: userId,
 			//guildId: interaction.guild.id,
 		});
 		if (!user) {
-			interaction.editReply(`<@${targetUserId}> nav izveidots profils...`);
+			interaction.editReply(`<@${userId}> nav izveidots profils...`);
+			user = new User({ userId });
 			return;
 		}
 
 		interaction.editReply(
-			targetUserId === interaction.member.id
+			userId === interaction.member.id
 				? `Tavā makā ir **${user.balance}**`
-				: `<@${targetUserId}> makā ir **${user.balance}**`
+				: `<@${userId}> makā ir **${user.balance}**`
 		);
 	},
 

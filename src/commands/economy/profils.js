@@ -22,27 +22,20 @@ module.exports = {
 			});
 			return;
 		}
-		const userId = interaction.member.id;
+		const userId = interaction.user.id;
 		await interaction.deferReply();
-		const user = await User.findOne({
+		let user = await User.findOne({
 			userId: userId,
 		});
 		if (!user) {
 			interaction.reply(`<@${userId}> nav izveidots profils...`);
+			user = new User({ userId });
 			return;
 		}
+
 		const fetchedLevel = await Level.findOne({
 			userId: userId,
 			guildId: interaction.guild.id,
-		});
-		let userFeniksaUzvara = await Stats.findOne({ userId }).select(
-			"userId fenikssIeguvumi"
-		);
-		if (!userFeniksaUzvara) {
-			userFeniksaUzvara = new Stats({ userId });
-		}
-		const fetchedStats = await Stats.findOne({
-			userId: userId,
 		});
 
 		const embed = new EmbedBuilder()
@@ -70,12 +63,12 @@ module.exports = {
 				},
 				{
 					name: "FENIKSA IEGUVUMI 🎰",
-					value: `${fetchedStats.fenikssIeguvumi}`,
+					value: `${user.fenikssIeguvumi}`,
 					inline: true,
 				},
 				{
 					name: "FENIKSA ZAUDĒJUMI 🎰❌",
-					value: `${fetchedStats.fenikssZaudejumi}`,
+					value: `${user.fenikssZaudejumi}`,
 					inline: true,
 				},
 			]);

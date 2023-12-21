@@ -50,14 +50,8 @@ module.exports = {
 			if (!cooldown) {
 				cooldown = new Cooldown({ userId, commandName });
 			}
-			let user = await User.findOne({ userId }).select("userId balance");
+			let user = await User.findOne({ userId });
 			if (!user) {
-				user = new User({ userId });
-			}
-			let userDepozits = await User.findOne({ userId }).select(
-				"userId depozitaPudeles"
-			);
-			if (!userDepozits) {
 				user = new User({ userId });
 			}
 			const chance = getRandomNumber(0, 100);
@@ -76,14 +70,13 @@ module.exports = {
 				}
 
 				user.balance -= stolenAmount;
-				userDepozits.depozitaPudeles = 0;
-				await user.save();
+				user.depozitaPudeles = 0;
 				await interaction.editReply(
 					`Tu ubagoji un bača nozaga tavu naudu **-${stolenAmount}** 😥\nViņš arī paņēma visas tavas depozīta pudeles.`
 				);
 				cooldown.endsAt = Date.now() + 200_000;
 				await cooldown.save();
-				await userDepozits.save();
+				await user.save();
 				return;
 			}
 			const amount = getRandomNumber(10, 90);

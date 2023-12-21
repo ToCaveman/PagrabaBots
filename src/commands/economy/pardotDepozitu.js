@@ -19,14 +19,11 @@ module.exports = {
 		await interaction.deferReply();
 		const userId = interaction.user.id;
 
-		let user = await User.findOne({ userId }).select("userId depozitaPudeles");
+		let user = await User.findOne({ userId });
 		if (!user) {
 			user = new User({ userId });
 		}
-		let userbalance = await User.findOne({ userId }).select("userId balance");
-		if (!userbalance) {
-			user = new User({ userId });
-		}
+
 		if (user.depozitaPudeles < 1) {
 			await interaction.editReply(
 				`Tev nav nevienas depozīta pudeles, ko var pārdot 🍼❌`
@@ -37,13 +34,12 @@ module.exports = {
 		//depozita pudelu pardosanas logika?
 		var depozitaVertiba = 10;
 		var ieguvumi = depozitaVertiba * user.depozitaPudeles;
-		userbalance.balance += ieguvumi;
+		user.balance += ieguvumi;
 		interaction.editReply(
-			`Tu pārdevi ${user.depozitaPudeles} depozīta pudeles un ieguvi **${ieguvumi}**\nTavā makā tagad ir: **${userbalance.balance}**`
+			`Tu pārdevi ${user.depozitaPudeles} depozīta pudeles un ieguvi **${ieguvumi}**\nTavā makā tagad ir: **${user.balance}**`
 		);
 
 		user.depozitaPudeles = 0;
-		await userbalance.save();
 		await user.save();
 	},
 	name: "pardotdepozitu",

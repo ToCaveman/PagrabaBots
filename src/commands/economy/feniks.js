@@ -48,21 +48,8 @@ module.exports = {
 		});
 		if (!user) {
 			interaction.reply(`<@${userId}> nav izveidots profils...`);
+			user = new User({ userId });
 			return;
-		}
-
-		let userFeniksaUzvara = await Stats.findOne({ userId }).select(
-			"userId fenikssIeguvumi"
-		);
-		if (!userFeniksaUzvara) {
-			userFeniksaUzvara = new Stats({ userId });
-		}
-
-		let userFeniksaZaude = await Stats.findOne({ userId }).select(
-			"userId fenikssZaudejumi"
-		);
-		if (!userFeniksaZaude) {
-			userFeniksaZaude = new Stats({ userId });
 		}
 
 		// naudas kasanas logika
@@ -75,27 +62,26 @@ module.exports = {
 		const uzvareja = Math.random() > 0.7;
 		if (!uzvareja) {
 			user.balance -= likme;
-			await user.save();
-			userFeniksaZaude.fenikssZaudejumi += likme;
+			user.fenikssZaudejumi += likme;
 			interaction.reply(
 				`Tu iegriezi ${likme} un kruķītajos aparātos pakāsi savu naudu! 😜`
 			);
 			cooldown.endsAt = Date.now() + 25_000;
 			await cooldown.save();
-			await userFeniksaZaude.save();
+			await user.save();
 			return;
 		}
 		//var uzvaret lidz +150%
 		var uzvarasDaudzums = Number((likme * (Math.random() + 0.55)).toFixed(0));
 		user.balance += uzvarasDaudzums;
-		userFeniksaUzvara.fenikssIeguvumi += uzvarasDaudzums;
+		user.fenikssIeguvumi += uzvarasDaudzums;
 		const kopejaUzvara = (uzvarasDaudzums += likme);
-		await user.save();
+
 		interaction.reply(
 			`🎰Tu iegriezi ${likme} un izcēli ${kopejaUzvara}🎰!\nTavā makā tagad ir: **${user.balance}**`
 		);
 		cooldown.endsAt = Date.now() + 25_000;
-		await userFeniksaUzvara.save();
+		await user.save();
 		await cooldown.save();
 	},
 	name: "fenikss",

@@ -40,7 +40,7 @@ module.exports = {
 		if (!cooldown) {
 			cooldown = new Cooldown({ userId, commandName });
 		}
-		let user = await User.findOne({ userId }).select("userId depozitaPudeles");
+		let user = await User.findOne({ userId });
 		if (!user) {
 			user = new User({ userId });
 		}
