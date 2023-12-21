@@ -4,7 +4,7 @@ const {
 	ApplicationCommandOptionType,
 } = require("discord.js");
 const User = require("../../models/User");
-const cooldowns = new Set();
+const Cooldown = require("../../models/cooldown");
 
 module.exports = {
 	/**
@@ -20,8 +20,21 @@ module.exports = {
 			});
 			return;
 		}
-
-		const targetUserId = interaction.member.id;
+		const userId = interaction.member.id;
+		const commandName = "fenikss";
+		let cooldown = await Cooldown.findOne({ userId, commandName });
+		if (cooldown && Date.now() < cooldown.endsAt) {
+			const { default: prettyMs } = await import("pretty-ms");
+			await interaction.reply(
+				`Tev vēl jāatdzesējas pirms atkal varēsi griezt aparātus.\nAparātus varēsi izmantot pēc: **${prettyMs(
+					cooldown.endsAt - Date.now()
+				)}**`
+			);
+			return;
+		}
+		if (!cooldown) {
+			cooldown = new Cooldown({ userId, commandName });
+		}
 
 		var likme = interaction.options.get("likme").value;
 		if (likme < 10) {
@@ -30,10 +43,10 @@ module.exports = {
 		}
 
 		const user = await User.findOne({
-			userId: targetUserId,
+			userId: userId,
 		});
 		if (!user) {
-			interaction.reply(`<@${targetUserId}> nav izveidots profils...`);
+			interaction.reply(`<@${userId}> nav izveidots profils...`);
 			return;
 		}
 
@@ -48,7 +61,11 @@ module.exports = {
 		if (!uzvareja) {
 			user.balance -= likme;
 			await user.save();
-			interaction.reply(`Tu iegriezi ${likme} un pakāsi savu naudu! 😜`);
+			interaction.reply(
+				`Tu iegriezi ${likme} un kruķītajos aparātos pakāsi savu naudu! 😜`
+			);
+			cooldown.endsAt = Date.now() + 100_000;
+			await cooldown.save();
 			return;
 		}
 		//var uzvaret lidz +150%
@@ -57,8 +74,10 @@ module.exports = {
 		const kopejaUzvara = (uzvarasDaudzums += likme);
 		await user.save();
 		interaction.reply(
-			`Tu iegriezi ${likme} un izcēli ${kopejaUzvara}!\nTavā makā tagad ir: **${user.balance}**`
+			`🎰Tu iegriezi ${likme} un izcēli ${kopejaUzvara}🎰!\nTavā makā tagad ir: **${user.balance}**`
 		);
+		cooldown.endsAt = Date.now() + 100_000;
+		await cooldown.save();
 	},
 	name: "fenikss",
 	description: "zaudē savus dzīves iekrājumus kruķītajos aparātos :))))",
