@@ -29,7 +29,9 @@ module.exports = {
 			//guildId: interaction.guild.id,
 		});
 		if (!user) {
-			interaction.editReply(`<@${userId}> nav izveidots profils...`);
+			interaction.editReply(
+				`<@${userId}> nav izveidots profils... (TAGAD TIEK IZVEIDOTS...)`
+			);
 			user = new User({ userId });
 			return;
 		}

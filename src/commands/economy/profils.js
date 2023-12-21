@@ -28,7 +28,9 @@ module.exports = {
 			userId: userId,
 		});
 		if (!user) {
-			interaction.reply(`<@${userId}> nav izveidots profils...`);
+			interaction.editReply(
+				`<@${userId}> nav izveidots profils... (TAGAD TIEK IZVEIDOTS...)`
+			);
 			user = new User({ userId });
 			return;
 		}
