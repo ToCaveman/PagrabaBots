@@ -104,9 +104,9 @@ module.exports = {
 		const vieta_4 = getRandomNumber(550, 1150);
 
 		// vietu iegusasnas iespejas
-		// 1 vieta > 70
-		// 2 vieta > 50
-		// 3 vieta > 30
+		// 1 vieta > 81
+		// 2 vieta > 65
+		// 3 vieta > 45
 		// 4 pateiciba par piedalisnasos > 23
 
 		//masinas plisanas logika
@@ -122,7 +122,7 @@ module.exports = {
 			}
 		}
 		// pirma vieta
-		if (probability >= 70) {
+		if (probability >= 81) {
 			user.balance += vieta_1;
 			userMasina.currentDurability -= atnemtaIzturiba;
 			statistika.masinas.zaudetaizturiba += atnemtaIzturiba;
@@ -166,7 +166,7 @@ module.exports = {
 		}
 
 		// otra vieta
-		if (probability >= 50) {
+		if (probability >= 65) {
 			user.balance += vieta_2;
 			userMasina.currentDurability -= atnemtaIzturiba;
 			statistika.masinas.zaudetaizturiba += atnemtaIzturiba;
@@ -207,7 +207,7 @@ module.exports = {
 		}
 
 		// tresa vieta
-		if (probability >= 30) {
+		if (probability >= 45) {
 			user.balance += vieta_3;
 			userMasina.currentDurability -= atnemtaIzturiba;
 			statistika.masinas.zaudetaizturiba += atnemtaIzturiba;
