@@ -89,7 +89,7 @@ module.exports = {
 				)
 				.setColor("Red")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				});
 			await interaction.reply({
@@ -116,7 +116,7 @@ module.exports = {
 				`🎰Tu iegriezi ${likme} un izcēli ${kopejaUzvara}🎰!\nTavā makā tagad ir: **${user.balance}**`
 			)
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.setColor("DarkGreen");

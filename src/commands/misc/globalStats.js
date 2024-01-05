@@ -9,7 +9,7 @@ module.exports = {
 			.setTitle("**PAGRABA BOTA GLOBĀLĀ STATISTIKA**")
 			.setDescription("visu lietotāju ieguvumi un zaudējumi")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([

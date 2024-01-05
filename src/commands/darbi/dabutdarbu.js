@@ -72,7 +72,7 @@ module.exports = {
 				},
 			],
 			footer: {
-				text: "PAGRABA IEMITNIEKS 2023",
+				text: "PAGRABA IEMITNIEKS 2024",
 				icon_url: client.user.displayAvatarURL(),
 			},
 		};

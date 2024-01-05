@@ -38,7 +38,7 @@ module.exports = {
 			.setColor("Random")
 			.setDescription("Tavas mašīnas statistika/informācija")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([

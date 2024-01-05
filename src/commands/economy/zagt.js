@@ -111,7 +111,7 @@ module.exports = {
 				.setTitle(`**TU MĒĢINĀJI APZAGT <@${targetUserId}>**`)
 				.setDescription("zādzība neizdevās")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -149,7 +149,7 @@ module.exports = {
 			.setTitle(`**TU MĒĢINĀJI APZAGT <@${targetUserId}>**`)
 			.setDescription("zādzība izdevās")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([

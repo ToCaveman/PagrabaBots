@@ -78,7 +78,7 @@ module.exports = {
 			.setTitle("Tavi darbadienas ieguvumi.")
 			.setDescription(`Tavs darbs: ${darbaVards}`)
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([

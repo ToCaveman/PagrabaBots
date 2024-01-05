@@ -6,7 +6,7 @@ module.exports = {
 			.setTitle("**PAGRABA BOTA ATAJUNINĀJUMI!**")
 			.setDescription("atajuninajums 30/12/2023")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([

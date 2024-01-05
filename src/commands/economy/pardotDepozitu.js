@@ -49,7 +49,7 @@ module.exports = {
 			)
 			.setColor("Green")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			});
 		await interaction.editReply({

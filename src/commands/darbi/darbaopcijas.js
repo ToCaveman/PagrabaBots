@@ -23,7 +23,7 @@ module.exports = {
 			description: "SOBRID PIEEJAMIE DARBI",
 			fields: [],
 			footer: {
-				text: "PAGRABA IEMITNIEKS 2023",
+				text: "PAGRABA IEMITNIEKS 2024",
 				icon_url: client.user.displayAvatarURL(),
 			},
 		};

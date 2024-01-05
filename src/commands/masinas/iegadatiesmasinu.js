@@ -133,7 +133,7 @@ module.exports = {
 			.setTitle("TU IEGĀDĀJIES JAUNU MAŠĪNU!")
 			.setDescription("Pirkums izdevās...")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([

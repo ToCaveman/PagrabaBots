@@ -43,7 +43,7 @@ module.exports = {
 			.setDescription(`**${user.balance}**`)
 			.setColor("Green")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			});
 
@@ -52,7 +52,7 @@ module.exports = {
 			.setDescription(`**${user.balance}**`)
 			.setColor("Green")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			});
 

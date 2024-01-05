@@ -63,7 +63,7 @@ module.exports = {
 			.setDescription(`Pārdotā mašīna: ${vecaisVards}`)
 			.setColor("Random")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([

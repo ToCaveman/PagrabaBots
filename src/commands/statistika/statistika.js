@@ -44,7 +44,7 @@ module.exports = {
 				.setTitle("**Tava /kaste statistika**")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -74,7 +74,7 @@ module.exports = {
 				.setTitle("**Tava /sacikstes statistika**")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -124,7 +124,7 @@ module.exports = {
 				.setTitle("**Tava darba statistika**")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -150,7 +150,7 @@ module.exports = {
 				.setTitle("**Tava masinas statistika**")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -177,7 +177,7 @@ module.exports = {
 				.setDescription("Tu nēssi bača")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -208,7 +208,7 @@ module.exports = {
 				.setTitle("**Tava depozīta statistika**")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -234,7 +234,7 @@ module.exports = {
 				.setTitle("**Tava zagšanas statistika**")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -281,7 +281,7 @@ module.exports = {
 				.setDescription("Bomzis")
 				.setColor("Random")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([

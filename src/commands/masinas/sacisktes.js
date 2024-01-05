@@ -139,7 +139,7 @@ module.exports = {
 				.setDescription("Tavi rezultāti...")
 				.setColor("Gold")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -183,7 +183,7 @@ module.exports = {
 				.setDescription("Tavi rezultāti...")
 				.setColor("Green")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -224,7 +224,7 @@ module.exports = {
 				.setDescription("Tavi rezultāti...")
 				.setColor("Blue")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -265,7 +265,7 @@ module.exports = {
 				.setDescription("Tavi rezultāti...")
 				.setColor("Blue")
 				.setFooter({
-					text: "PAGRABA IEMĪTNIEKS 2023",
+					text: "PAGRABA IEMĪTNIEKS 2024",
 					iconURL: client.user.displayAvatarURL(),
 				})
 				.addFields([
@@ -302,7 +302,7 @@ module.exports = {
 			.setDescription("Tavi rezultāti...")
 			.setColor("Red")
 			.setFooter({
-				text: "PAGRABA IEMĪTNIEKS 2023",
+				text: "PAGRABA IEMĪTNIEKS 2024",
 				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([
