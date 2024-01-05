@@ -10,7 +10,15 @@ const client = new Client({
 		IntentsBitField.Flags.GuildPresences,
 		IntentsBitField.Flags.MessageContent,
 	],
+	presence: {
+		status: "online",
+		activity: {
+			name: "fenikss",
+			type: "PLAYING",
+		},
+	},
 });
+
 (async () => {
 	try {
 		await mongoose.connect(process.env.MONGODB_URI);

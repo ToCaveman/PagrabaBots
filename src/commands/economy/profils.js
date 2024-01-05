@@ -7,6 +7,8 @@ const {
 const User = require("../../models/User");
 const Level = require("../../models/level");
 const Stats = require("../../models/stats");
+const UserMasinas = require("../../models/userMasinas");
+const Statistika = require("../../models/statistika");
 
 module.exports = {
 	/**
@@ -27,12 +29,23 @@ module.exports = {
 		let user = await User.findOne({
 			userId: userId,
 		});
+		let statistika = await Statistika.findOne({ userId: userId });
+		if (!statistika) {
+			statistika = new Statistika({ userId });
+			await statistika.save();
+			console.log("izveidoju jaunu statistikas profilu");
+		}
 		if (!user) {
 			interaction.editReply(
-				`<@${userId}> nav izveidots profils... (TAGAD TIEK IZVEIDOTS...)`
+				`<@${userId}> nav izveidots profils... (TAGAD TIEK IZVEIDOTS...)\n izdari /ikdieniskais`
 			);
 			user = new User({ userId });
-			return;
+		}
+		let userMasina = await UserMasinas.findOne({ userId: userId });
+		if (!userMasina) {
+			userMasina = new UserMasinas({ userId });
+			await userMasina.save();
+			console.log("tev tiek izveidots masinu profils");
 		}
 
 		const fetchedLevel = await Level.findOne({
@@ -46,11 +59,17 @@ module.exports = {
 			.setThumbnail(interaction.user.displayAvatarURL())
 			.setFooter({
 				text: "PAGRABA IEMĪTNIEKS 2023",
+				iconURL: client.user.displayAvatarURL(),
 			})
 			.addFields([
 				{
 					name: "MAKS 💰",
 					value: `${user.balance}`,
+					//inline: true,
+				},
+				{
+					name: "DARBS",
+					value: `${user.darbs}`,
 					//inline: true,
 				},
 				{
@@ -64,23 +83,13 @@ module.exports = {
 					//inline: true,
 				},
 				{
-					name: "FENIKSA IEGUVUMI 🎰",
-					value: `${user.fenikssIeguvumi}`,
+					name: "PIEREDZE",
+					value: `${user.experience}`,
 					//inline: true,
 				},
 				{
-					name: "FENIKSA ZAUDĒJUMI 🎰❌",
-					value: `${user.fenikssZaudejumi}`,
-					//inline: true,
-				},
-				{
-					name: "DEPOZITA IEGUVUMI 🧨",
-					value: `${user.depozitsIeguvumi}`,
-					//inline: true,
-				},
-				{
-					name: "DEP PUDELES KOPĀ 🍾",
-					value: `${user.kopejiDepozits}`,
+					name: "MAŠĪNA",
+					value: `${userMasina.name}`,
 					//inline: true,
 				},
 				{

@@ -2,9 +2,14 @@ const {
 	Client,
 	Interaction,
 	ApplicationCommandOptionType,
+	EmbedBuilder,
 } = require("discord.js");
 const User = require("../../models/User");
-
+function getRandomNumber(x, y) {
+	const range = y - x + 1;
+	const randomNumber = Math.floor(Math.random() * range);
+	return randomNumber + x;
+}
 module.exports = {
 	/**
 	 *
@@ -36,9 +41,20 @@ module.exports = {
 		var ieguvumi = depozitaVertiba * user.depozitaPudeles;
 		user.balance += ieguvumi;
 		user.depozitsIeguvumi += ieguvumi;
-		interaction.editReply(
-			`Tu pārdevi ${user.depozitaPudeles} depozīta pudeles un ieguvi **${ieguvumi}**\nTavā makā tagad ir: **${user.balance}**`
-		);
+		user.experience += getRandomNumber(1, 2);
+		let embed = new EmbedBuilder()
+			.setTitle("Tu ieliki savas pudeles traromātā...")
+			.setDescription(
+				`Tu pārdevi ${user.depozitaPudeles} depozīta pudeles un ieguvi **${ieguvumi}**\nTavā makā tagad ir: **${user.balance}**`
+			)
+			.setColor("Green")
+			.setFooter({
+				text: "PAGRABA IEMĪTNIEKS 2023",
+				iconURL: client.user.displayAvatarURL(),
+			});
+		await interaction.editReply({
+			embeds: [embed],
+		});
 
 		user.depozitaPudeles = 0;
 		await user.save();

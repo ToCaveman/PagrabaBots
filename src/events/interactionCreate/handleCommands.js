@@ -1,5 +1,6 @@
 const { devs, testServer } = require("../../../config.json");
 const getLocalCommands = require("../../utils/getLocalCommands");
+const { InteractionType } = require("discord.js");
 
 module.exports = async (client, interaction) => {
 	if (!interaction.isChatInputCommand()) {
@@ -54,6 +55,15 @@ module.exports = async (client, interaction) => {
 					});
 					return;
 				}
+			}
+		}
+		if (interaction.type == InteractionType.ApplicationCommandAutocomplete) {
+			console.log("interaction commands");
+
+			try {
+				await commandObject.autocomplete(client, interaction);
+			} catch (error) {
+				console.log(error);
 			}
 		}
 

@@ -2,6 +2,7 @@ const {
 	Client,
 	Interaction,
 	ApplicationCommandOptionType,
+	EmbedBuilder,
 } = require("discord.js");
 const User = require("../../models/User");
 
@@ -48,11 +49,22 @@ module.exports = {
 		sanemejs.balance += daudzums;
 		sutitajs.balance -= daudzums;
 		sutitajs.noziedots += daudzums;
+		//sutitajs.experience += getRandomNumber(1, 5);
 		await sanemejs.save();
 		await sutitajs.save();
-		interaction.reply(
-			`<@${sutitajsId}> nosūtīja **${daudzums}** <@${targetUserId}>`
-		);
+		let embed = new EmbedBuilder()
+			.setTitle("Tika veikts zideojums...")
+			.setDescription(
+				`<@${sutitajsId}> nosūtīja **${daudzums}** <@${targetUserId}>`
+			)
+			.setColor("Navy")
+			.setFooter({
+				text: "PAGRABA IEMĪTNIEKS 2023",
+				iconURL: client.user.displayAvatarURL(),
+			});
+		await interaction.reply({
+			embeds: [embed],
+		});
 	},
 
 	name: "ziedot",

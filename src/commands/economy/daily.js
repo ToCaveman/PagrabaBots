@@ -1,4 +1,4 @@
-const { Client, Interaction } = require("discord.js");
+const { Client, Interaction, EmbedBuilder } = require("discord.js");
 const User = require("../../models/User");
 
 const dailyAmount = 100;
@@ -50,12 +50,24 @@ module.exports = {
 					lastDaily: new Date(),
 				});
 			}
-
-			user.balance += getRandomInt(50, 150);
+			const dailyAmount1 = getRandomInt(50, 200);
+			user.balance += dailyAmount1;
+			user.experience += getRandomInt(1, 5);
 			await user.save();
-			interaction.editReply(
-				`${dailyGeneratedAmount} ir ticis injicēts tavā kontā\n**TAVĀ KONTĀ IR: **${user.balance}`
-			);
+			let embed = new EmbedBuilder()
+				.setTitle("TU SAŅĒMI SAVU IKDIENIŠĶO NAUDAS INJEKCIJU")
+				.setDescription(
+					`**${dailyAmount1}** ir ticis injicēts tavā kontā\nTAVĀ KONTĀ IR: ${user.balance}`
+				)
+				.setColor("Yellow")
+				.setFooter({
+					text: "PAGRABA IEMĪTNIEKS 2023",
+					iconURL: client.user.displayAvatarURL(),
+				});
+
+			await interaction.editReply({
+				embeds: [embed],
+			});
 		} catch (error) {
 			console.log(`Kļūme ikdienišķajā kommandā: ${error}`);
 		}

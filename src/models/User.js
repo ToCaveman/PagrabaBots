@@ -18,6 +18,7 @@ const userSchema = new Schema({
 	},
 	lastDaily: {
 		type: Date,
+		default: "2022-12-24T14:21:59.083+00:00",
 		required: true,
 	},
 	fenikssIeguvumi: {
@@ -43,6 +44,18 @@ const userSchema = new Schema({
 	noziedots: {
 		type: Number,
 		default: 0,
+	},
+	experience: {
+		type: Number,
+		default: 0,
+	},
+	darbs: {
+		type: String,
+		default: "Bezdarbnieks",
+	},
+	masina: {
+		type: Object,
+		default: { name: "kajas" },
 	},
 });
 

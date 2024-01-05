@@ -4,9 +4,7 @@ const inventorySchema = new Schema({
 		type: String,
 		required: true,
 	},
-	inventory: {
-		type: Object,
-	},
+	inventory: [],
 });
 
 module.exports = model("Inventory", inventorySchema);

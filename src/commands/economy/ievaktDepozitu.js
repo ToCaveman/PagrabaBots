@@ -2,6 +2,7 @@ const {
 	Client,
 	Interaction,
 	ApplicationCommandOptionType,
+	EmbedBuilder,
 } = require("discord.js");
 const User = require("../../models/User");
 const Cooldown = require("../../models/cooldown");
@@ -48,10 +49,21 @@ module.exports = {
 		const depozitaPudele = getRandomNumber(1, 25);
 		user.depozitaPudeles += depozitaPudele;
 		user.kopejiDepozits += depozitaPudele;
+		user.experience += getRandomNumber(1, 2);
 		await user.save();
-		interaction.editReply(
-			`Tu pa miskastēm savāci **${depozitaPudele}** depoziīta pudeles\nTagad tev ir **${user.depozitaPudeles}** depozīta pudeles`
-		);
+		let embed = new EmbedBuilder()
+			.setTitle("Tu ievāci depozītu...")
+			.setDescription(
+				`Tu pa miskastēm savāci **${depozitaPudele}** depoziīta pudeles\nTagad tev ir **${user.depozitaPudeles}** depozīta pudeles`
+			)
+			.setColor("White")
+			.setFooter({
+				text: "PAGRABA IEMĪTNIEKS 2023",
+				iconURL: client.user.displayAvatarURL(),
+			});
+		await interaction.editReply({
+			embeds: [embed],
+		});
 		cooldown.endsAt = Date.now() + 250_000;
 		await cooldown.save();
 	},

@@ -12,6 +12,7 @@ module.exports = {
 			interaction.reply("Šobrīd veikalā nekas netiek pārdots...");
 			return;
 		}
+
 		const shopList = items.map((value, index) => {
 			return `\n**${index + 1}.** ${value.item}: ${value.price}`;
 		});
@@ -20,5 +21,6 @@ module.exports = {
 	},
 
 	name: "veikals",
+	deleted: true,
 	description: "paskaties, ko pārdod veikalā",
 };
