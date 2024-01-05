@@ -31,7 +31,7 @@ module.exports = [
 	},
 	{
 		name: "Prezidents",
-		income: 1000000,
+		income: 250000,
 		pieredze: 3000,
 		id: 3,
 	},
