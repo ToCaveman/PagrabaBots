@@ -54,10 +54,11 @@ module.exports = {
 		}
 
 		const maksimalaIzturiba = userMasina.maxDurability;
+		let curDur = userMasina.currentDurability;
+		let maxDur = userMasina.maxDurability;
 
 		const izmaksa = 550;
-		const cikIztrubaTrukst = (userMasina.maxDurability -=
-			userMasina.currentDurability);
+		const cikIztrubaTrukst = (maxDur -= curDur);
 		const labosanasDaudzums =
 			interaction.options.get("daudzums")?.value || cikIztrubaTrukst;
 		const cikDaudzizturibaBus =
