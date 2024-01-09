@@ -74,7 +74,7 @@ module.exports = {
 			name: "daudzums",
 			description: "daudzums ko kādam vēlies ziedot",
 			required: true,
-			type: ApplicationCommandOptionType.Number,
+			type: ApplicationCommandOptionType.Integer,
 		},
 		{
 			name: "lietotajs",

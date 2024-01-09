@@ -136,7 +136,7 @@ module.exports = {
 		{
 			name: "likme",
 			description: "likme ko griezīsi...",
-			type: ApplicationCommandOptionType.Number,
+			type: ApplicationCommandOptionType.Integer,
 			required: true,
 		},
 	],
