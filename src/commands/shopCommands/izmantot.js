@@ -4,10 +4,9 @@ const {
 	ApplicationCommandOptionType,
 	IntegrationApplication,
 	EmbedBuilder,
+	messageLink,
 } = require("discord.js");
-const User = require("../../models/User");
-const Inventory = require("../../models/inventory");
-const shopItems = require("../../shopItems");
+const itemList = require("../../itemList");
 
 module.exports = {
 	/**
@@ -16,45 +15,40 @@ module.exports = {
 	 * @param {Interaction} interaction
 	 */
 	callback: async (client, interaction) => {
-		if (!interaction.inGuild()) {
-			interaction.reply("so kommandu var izmantot tikai serveros");
-			return;
-		}
-		const userId = interaction.user.id;
-		let userInventory = Inventory.findOne({
-			userId: userId,
-		});
-		if (!userInventory) {
-			interaction.reply(
-				"tev nav mantu maisa, kas nozime, ka tev ari nav manti\nTavs mantu maiss tagad tiek izveidots"
-			);
-			userInventory = new Inventory({ userId });
-			await userInventory.save();
-			return;
-		}
-		await interaction.deferReply();
-		let mantaToUse = Inventory.findOne({
-			userId: userId,
-			inventory: { item: interaction.options.get("manta").value },
-		});
-		const isConsumable = mantaToUse.inventory.item;
+		const item = interaction.options.get("manta").value;
+		console.log(item);
 
-		console.log(isConsumable);
-		if (mantaToUse.consumable === false) {
-			console.log("neizmantojama mantas");
-			interaction.editReply("so mantu nevar izmantot");
-			return;
+		// Find the key only within the veikals object based on user input
+		const veikalsKeys = Object.keys(itemList.veikals);
+		console.log(veikalsKeys);
+		let foundKey = null;
+
+		for (const key of veikalsKeys) {
+			if (itemList.veikals[key].name.toLowerCase() === item.toLowerCase()) {
+				foundKey = key;
+				break;
+			}
 		}
-		if (!mantaToUse) {
-			interaction.editReply("tev nav sadas mantas!");
-			return;
+
+		if (foundKey !== null) {
+			console.log(`Found key in veikals: ${foundKey}`);
+			// Access the corresponding item in veikals using items.veikals[foundKey]
+			// For example: const virveItem = items.veikals[foundKey];
+		} else {
+			console.log("Key not found in veikals");
 		}
-		interaction.editReply("akkakaka");
+
+		const selectedItem = itemList.veikals[foundKey];
+		console.log(`Name: ${selectedItem.name}`);
+		console.log(`Value: ${selectedItem.value}`);
+		console.log(`Info: ${selectedItem.info}`);
+
+		const resultText = await selectedItem.use(interaction);
+		interaction.reply(`${resultText}`);
 	},
 
 	name: "izmantot",
 	description: "Izmanto kadu no mantam kas tev pieder",
-	deleted: true,
 	options: [
 		{
 			name: "manta",

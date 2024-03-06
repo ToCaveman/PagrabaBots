@@ -113,7 +113,7 @@ module.exports = {
 		let feniksuzvara = new EmbedBuilder()
 			.setTitle("TU iegriezi aparātus...")
 			.setDescription(
-				`🎰Tu iegriezi ${likme} un izcēli ${kopejaUzvara}🎰!\nTavā makā tagad ir: **${user.balance}**`
+				`🎰 Tu iegriezi ${likme} un izcēli ${kopejaUzvara} 🎰!\nTavā makā tagad ir: **${user.balance}**`
 			)
 			.setFooter({
 				text: "PAGRABA IEMĪTNIEKS 2024",

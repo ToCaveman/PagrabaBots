@@ -4,7 +4,10 @@ const inventorySchema = new Schema({
 		type: String,
 		required: true,
 	},
-	inventory: [],
+	inventory: {
+		type: Object,
+		default: {},
+	},
 });
 
 module.exports = model("Inventory", inventorySchema);
